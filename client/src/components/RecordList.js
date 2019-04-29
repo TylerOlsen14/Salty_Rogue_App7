@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Container, ListGroup, ListGroupItem, Button } from 'reactstrap';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import uuid from 'uuid';
+import { connect } from 'react-redux';
+import { getRecords } from '../actions/recordActions';
+import PropTypes from 'prop-types';
 
 class RecordList extends Component{
   state= {
@@ -59,5 +62,13 @@ class RecordList extends Component{
   }
 }
 
+RecordList.PropTypes = {
+  getRecords: PropTypes.func.isRequired,
+  record: PropTypes.object.isRequired
+}
 
-export default RecordList
+const mapStateToProps = (state) => ({
+  record: state.record
+})
+
+export default connect(mapStateToProps, { getRecords })(RecordList);// allows us to take state and map it into a list
