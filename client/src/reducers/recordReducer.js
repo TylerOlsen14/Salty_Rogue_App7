@@ -1,13 +1,9 @@
 import uuid from 'uuid';
-import { GET_RECORDS, ADD_RECORD, DELETE_RECORD } from '../actions/types';
+import { GET_RECORDS, ADD_RECORD, DELETE_RECORD, RECORDS_LOADING } from '../actions/types';
 
 const initialState = {
-  records: [
-    { id: uuid(), ClientName: 'Tyler', ClientPhoneNumber: 8, ClientNotes: 'We talked' },
-    { id: uuid(), ClientName: 'Chloe', ClientPhoneNumber: 5, ClientNotes: 'We laughed' },
-    { id: uuid(), ClientName: 'Carter', ClientPhoneNumber: 6, ClientNotes: 'We drank' },
-    { id: uuid(), ClientName: 'Laurel', ClientPhoneNumber: 7, ClientNotes: 'We ate' },
-  ]
+  records: [],
+  loading: false
 
 }
 
@@ -16,8 +12,8 @@ export default function(state = initialState, action) {
     case GET_RECORDS:
       return {
         ...state,
-        // items: action.payload,
-        // loading: false
+        items: action.payload,
+        loading: false
       };
     case DELETE_RECORD:
       return {
@@ -29,11 +25,11 @@ export default function(state = initialState, action) {
         ...state,
         records: [action.payload, ...state.records]
       };
-    // case RECORDS_LOADING:
-    //   return {
-    //     ...state,
-    //     loading: true
-    //   };
+    case RECORDS_LOADING:
+      return {
+        ...state,
+        loading: true
+      };
     default:
       return state;
   }

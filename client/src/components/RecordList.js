@@ -22,7 +22,7 @@ class RecordList extends Component{
           <TransitionGroup className="Record-List">
             {records.map(({ id, ClientName, ClientPhoneNumber, ClientNotes}) => (
               <CSSTransition key={id} timeout={500} classNames="fade">
-                <ListGroupItem>
+                <ListGroupItem display="grid">
                   <Button
                     className="remove-btn"
                     color="danger"
