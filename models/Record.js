@@ -5,15 +5,15 @@ const Schema = mongoose.Schema;
 const RecordSchema = new Schema({
   ClientName: {
     type: String,
-    required: true
+    required: false
   },
   ClientPhoneNumber: {
     type: Number,
-    required: true,
+    required: false,
   },
   ClientNotes: {
     type: String,
-    required: true
+    required: false
   },
   date: {
     type: Date,
