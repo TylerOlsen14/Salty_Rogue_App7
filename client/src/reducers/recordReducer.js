@@ -12,12 +12,29 @@ const initialState = {
 }
 
 export default function(state = initialState, action) {
-  switch(action.type) {
+  switch (action.type) {
     case GET_RECORDS:
-      return{
-        ...state
-      }
-    default: 
+      return {
+        ...state,
+        // items: action.payload,
+        // loading: false
+      };
+    case DELETE_RECORD:
+      return {
+        ...state,
+        records: state.records.filter(record => record._id !== action.payload)
+      };
+    case ADD_RECORD:
+      return {
+        ...state,
+        records: [action.payload, ...state.records]
+      };
+    // case RECORDS_LOADING:
+    //   return {
+    //     ...state,
+    //     loading: true
+    //   };
+    default:
       return state;
   }
 }

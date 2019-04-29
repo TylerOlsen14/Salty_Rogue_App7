@@ -5,3 +5,15 @@ export const getRecords = () => {
     type: GET_RECORDS
   }
 }
+export const deleteRecord = (id) => {
+  return {
+    type: DELETE_RECORD,
+    payload: id
+  }
+}
+export const addRecord = record => {
+  return {
+    type: ADD_RECORD,
+    payload: record
+  }
+}

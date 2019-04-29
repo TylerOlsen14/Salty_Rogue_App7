@@ -12,9 +12,3 @@ const store = createStore(rootReducer, initialState, compose(
 ));
 
 export default store;
-
-
-
-
-
-
